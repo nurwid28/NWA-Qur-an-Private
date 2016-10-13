@@ -11,6 +11,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
     Spinner spProvinsi;
     EditText etNama, etNomor, etAlamat, etJam;
     Button bOk;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setTitle("NWA-Qur'an Private");
 
         spProvinsi = (Spinner) findViewById(R.id.spinnerProvinsi);
         etNama = (EditText) findViewById(R.id.editTextNama);
@@ -115,16 +118,24 @@ public class MainActivity extends AppCompatActivity {
             cek = cbKms.getText().toString();
         }
         if (jam.isEmpty()) {
-            etJam.setError("Harap isikan Alamat Anda!!!");
+            etJam.setError("Harap isikan Jam Les Anda!!!");
         } else {
             etJam.setError(null);
         }
 
-        tvHasil.setText(" DATA PELANGGAN \n" +
-                "\n Anda Berada di " + lokasi + "\n Nama : " + nama + "\n Nomor Telpon : "
-                + nomor + "\n Alamat : " + alamat + "Jenis Kelamin : " + hasil +
-                "\n Pilihan Hari : " + cek + "\n Pilihan Jam Les : " + jam +
-                "\n\n\n SELAMAT ! DATA ANDA SUDAH TERKIRIM !!");
+        if(nama.isEmpty() && nomor.isEmpty() && alamat.isEmpty() && jam.isEmpty())
+        {
+            tvHasil.setText(" Harap isi form terlebih dahulu!! ");
+        }
+        else
+        {
+            tvHasil.setText(" DATA PELANGGAN \n" +
+                    "\n Anda Berada di " + lokasi + "\n Nama : " + nama + "\n Nomor Telpon : "
+                    + nomor + "\n Alamat : " + alamat + "\n Jenis Kelamin : " + hasil +
+                    "\n Pilihan Hari : " + cek + "\n Pilihan Jam Les : " + jam +
+                    "\n\n\n SELAMAT ! DATA ANDA SUDAH TERKIRIM !!");
+        }
+
         /*if (isValid()) {
             tvHasil.setText(" \nNama Anda : " + etNama.getText().toString() + " \nNomor Telpon anda : " + etNomor.getText().toString()
                     + " \nAlamat Rumah Anda : " + etAlamat.getText().toString());*//*
